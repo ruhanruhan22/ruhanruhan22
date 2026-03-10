@@ -3,137 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruhan Madina Putri | Portofolio Desain</title>
+    <title>Neng Karamoy - Premium Roti Bakar</title>
+    
+    <!-- Google Fonts: Playfair Display for elegant headings, Montserrat for clean text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --chocolate-dark: #2A1810;
-            --chocolate-warm: #3D2B1F;
-            --gold: #D4AF37;
-            --gold-light: #F1D37E;
-            --cream: #FDF5E6;
-        }
-
-        body {
-            background-color: var(--chocolate-dark);
-            color: var(--cream);
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-      
-          margin: 0;
-        }
-
-        .font-heading {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Efek Keju Jatuh */
-        .cheese-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .cheese-flake {
-            position: absolute;
-            background: #FFD700;
-            width: 8px;
-            height: 2px;
-            border-radius: 2px;
-            opacity: 0.6;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        choc: {
+                            deep: '#1A0F0A',
+                            dark: '#27140C',
+                            main: '#3E2723',
+                            light: '#5D4037',
+                            warm: '#8B5A2B'
+                        },
+                        gold: {
+                            light: '#F3E5AB',
+                            main: '#D4AF37',
+                            dark: '#AA8C2C',
+                            glow: '#FFDF73'
+                        },
+                        cream: '#FFF8E7'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(39, 20, 12, 0.8), rgba(26, 15, 10, 0.95)), url('https://images.unsplash.com/photo-1484723091791-009e3262a61f?q=80&w=2070&auto=format&fit=crop')",
+                        'texture': "url('https://www.transparenttextures.com/patterns/dark-leather.png')"
+                    }
+                }
             }
         }
-
-        /* Gold Glow Styling */
-        .gold-glow {
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #27140C; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37; 
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AA8C2C; 
+        }
+        
+        .gold-gradient-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .menu-card {
-            background: var(--chocolate-warm);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
-
-        .menu-card:hover {
-            transform: translateY(-15px);
-            border-color: var(--gold);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-        }
-
-        .floating-roti {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Cokelat Leleh Border */
-        .drip-border {
-            position: relative;
-        }
-        .drip-border::after {
-            content: "";
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            background-image: radial-gradient(circle at 20px 0%, var(--chocolate-warm) 20px, transparent 21px);
-            background-size: 40px 40px;
-            z-index: 10;
+        
+        .hover-gold-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            border-color: #D4AF37;
         }
     </style>
 </head>
-<body>
+<body class="bg-choc-dark text-cream font-sans antialiased selection:bg-gold-main selection:text-choc-dark">
 
-    <!-- Latar Belakang Animasi Keju -->
-    <div class="cheese-container" id="cheeseZone"></div>
-
-    <!-- Navigasi -->
-    <nav class="fixed w-full z-50 bg-[#2A1810]/95 border-b border-gold/20 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-heading font-bold text-gold tracking-tighter">RUHAN MADINA.</div>
-            <div class="hidden md:flex space-x-8 text-xs font-bold tracking-widest text-gold/80">
-                <a href="#home" class="hover:text-gold transition">BERANDA</a>
-                <a href="#portfolio" class="hover:text-gold transition">PROYEK</a>
-                <a href="#about" class="hover:text-gold transition">TENTANG</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-choc-deep/95 backdrop-blur-sm border-b border-gold-dark/30" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl md:text-3xl font-bold text-gold-main tracking-wider gold-gradient-text">
+                        Neng Karamoy
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#beranda" class="text-cream hover:text-gold-main transition-colors text-sm uppercase tracking-widest font-medium">Beranda</a>
+                    <a href="#tentang" class="text-cream hover:text-gold-main transition-colors text-sm uppercase tracking-widest font-medium">Tentang</a>
+                    <a href="#menu" class="text-cream hover:text-gold-main transition-colors text-sm uppercase tracking-widest font-medium">Menu Spesial</a>
+                    <a href="#galeri" class="text-cream hover:text-gold-main transition-colors text-sm uppercase tracking-widest font-medium">Galeri</a>
+                    <a href="#kontak" class="px-6 py-2 border-2 border-gold-main text-gold-main hover:bg-gold-main hover:text-choc-deep transition-all duration-300 rounded-sm text-sm uppercase tracking-widest font-bold">Pesan</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gold-main hover:text-gold-light focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-choc-deep border-t border-gold-dark/30">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#beranda" class="block px-3 py-2 text-base font-medium text-cream hover:text-gold-main">Beranda</a>
+                <a href="#tentang" class="block px-3 py-2 text-base font-medium text-cream hover:text-gold-main">Tentang</a>
+                <a href="#menu" class="block px-3 py-2 text-base font-medium text-cream hover:text-gold-main">Menu Spesial</a>
+                <a href="#galeri" class="block px-3 py-2 text-base font-medium text-cream hover:text-gold-main">Galeri</a>
+                <a href="#kontak" class="block px-3 py-2 text-base font-medium text-gold-main font-bold">Pesan Sekarang</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="text-center md:text-left">
-                <h2 class="text-gold font-bold tracking-[0.4em] mb-4 text-sm">PORTOFOLIO DESAIN</h2>
-                <h1 class="text-5xl md:text-7xl font-heading font-bold mb-6 gold-glow leading-tight">Ruhan Madina Putri</h1>
-                <p class="text-lg text-cream/70 mb-10 max-w-md mx-auto md:mx-0">
-                    Menciptakan identitas brand yang menggugah selera melalui perpaduan estetika cokelat hangat dan kemewahan emas.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a href="#portfolio" class="bg-gold text-chocolate-dark px-10 py-4 rounded-full font-bold hover:scale-105 transition transform text-black">Lihat Menu</a>
-                    <div class="px-10 py-4 border border-gold text-gold rounded-full font-bold">Creative Designer</div>
-                </div>
+    <section id="beranda" class="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat">
+        <div class="absolute inset-0 bg-texture opacity-30 pointer-events-none"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <span class="block text-gold-main font-sans tracking-[0.3em] uppercase text-sm md:text-base mb-4 animate-fade-in-up">Kelezatan Premium Sejak 2024</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-cream mb-6 leading-tight drop-shadow-xl">
+                Kehangatan dalam <br> <span class="gold-gradient-text italic">Setiap Gigitan</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 font-light max-w-2xl mx-auto">
+                Menghadirkan harmoni sempurna antara roti panggang yang renyah di luar, lembut di dalam, dengan limpahan cokelat hangat yang memanjakan lidah.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#menu" class="px-8 py-4 bg-gold-main text-choc-deep font-bold uppercase tracking-wider text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm gold-border-glow">
+                    Lihat Menu Kami
+                </a>
+                <a href="#tentang" class="px-8 py-4 border-2 border-gold-main text-gold-main font-bold uppercase tracking-wider text-sm hover:bg-gold-main/10 transition-colors duration-300 rounded-sm">
+                    Kisah Kami
+                </a>
             </div>
-            <div class="flex justify-center">
-                <div class="relative group">
-                    <div class="absolute -inset-2 bg-gold/30 rounded-full blur-xl group-hover:bg-gold/50 transition"></div>
-                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-gold p-2 relative z-10 bg-chocolate-dark">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Foto Ruhan Madina" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700">
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#tentang" class="text-gold-main/70 hover:text-gold-main transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-24 bg-choc-main relative overflow-hidden">
+        <div class="absolute inset-0 bg-texture opacity-20 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute -inset-4 border-2 border-gold-main/50 translate-x-4 translate-y-4 rounded-sm hidden md:block"></div>
+                    <img src="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?q=80&w=1000&auto=format&fit=crop" alt="Roti Bakar Cokelat Premium" class="relative z-10 w-full h-[500px] object-cover rounded-sm shadow-2xl">
+                    <!-- Decor element -->
+                    <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-choc-deep rounded-full border border-gold-main/30 flex items-center justify-center z-20 shadow-xl hidden md:flex">
+                        <div class="text-center">
+                            <span class="block text-gold-main font-serif text-3xl font-bold">100%</span>
+                            <span class="block text-xs uppercase tracking-wider text-cream">Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="h-[1px] w-12 bg-gold-main"></div>
+                        <span class="text-gold-main uppercase tracking-widest text-sm font-semibold">Tentang Neng Karamoy</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-cream">Rasa Bintang Lima,<br><span class="text-gold-main italic">Harga Bersahabat</span></h2>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-lg font-light">
+                        Berawal dari kecintaan pada kudapan manis yang menghangatkan suasana, <strong>Neng Karamoy</strong> lahir untuk mengangkat derajat roti bakar jalanan menjadi mahakarya kuliner. 
+                    </p>
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg font-light">
+                        Kami hanya menggunakan roti gandum dan brioche pilihan, dipanggang dengan mentega premium hingga mencapai tingkat keemasan yang sempurna. Dipadukan dengan selai cokelat Belgia lumer dan aneka *topping* mewah, setiap gigitan adalah perayaan rasa.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-bread-slice text-gold-main text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="text-gold-light font-bold mb-1">Roti Artisan</h4>
+                                <p class="text-sm text-gray-400">Dibuat segar setiap hari dengan bahan berkualitas.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fas fa-cookie-bite text-gold-main text-2xl mt-1"></i>
+                            <div>
+                                <h4 class="text-gold-light font-bold mb-1">Bahan Premium</h4>
+                                <p class="text-sm text-gray-400">Cokelat asli, keju pilihan, tanpa pengawet.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,97 +200,230 @@
     </section>
 
     <!-- Menu Portfolio Section -->
-    <section id="portfolio" class="py-24 px-6 bg-[#3D2B1F] drip-border relative">
-        <div class="max-w-7xl mx-auto text-center">
-            <h3 class="text-gold font-bold tracking-widest mb-2">STUDI KASUS</h3>
-            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-16 text-white">Roti Bakar Neng Karamoy</h2>
+    <section id="menu" class="py-24 bg-choc-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="h-[1px] w-12 bg-gold-main"></div>
+                    <span class="text-gold-main uppercase tracking-widest text-sm font-semibold">Portofolio Rasa</span>
+                    <div class="h-[1px] w-12 bg-gold-main"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-cream mb-4">Koleksi <span class="text-gold-main italic">Signature</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto font-light">Pilihan mahakarya roti bakar terbaik kami, diciptakan khusus untuk memanjakan penikmat cokelat dan kemewahan sejati.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="bg-choc-main border border-choc-light rounded-sm overflow-hidden group hover-gold-glow transition-all duration-500">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?q=80&w=800&auto=format&fit=crop" alt="Royal Chocolate Melt" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-gold-main text-choc-deep text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm">Best Seller</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-bold text-gold-light mb-2 group-hover:text-gold-main transition-colors">Royal Choco Melt</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Roti brioche panggang mentega dengan isian lelehan dark chocolate Belgia premium dan taburan chocochips.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-gold-main font-bold text-xl">Rp 35.000</span>
+                            <button class="text-cream hover:text-gold-main text-sm uppercase tracking-wider font-semibold transition-colors"><i class="fas fa-plus mr-2 text-gold-main"></i>Pesan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="bg-choc-main border border-choc-light rounded-sm overflow-hidden group hover-gold-glow transition-all duration-500">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1627308595229-7830f5c90683?q=80&w=800&auto=format&fit=crop" alt="Golden Cheese & Choco" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-bold text-gold-light mb-2 group-hover:text-gold-main transition-colors">Golden Cheese Velvet</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Perpaduan sempurna antara manisnya cokelat hazelnut dan gurihnya keju mozzarella yang meleleh sempurna.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-gold-main font-bold text-xl">Rp 42.000</span>
+                            <button class="text-cream hover:text-gold-main text-sm uppercase tracking-wider font-semibold transition-colors"><i class="fas fa-plus mr-2 text-gold-main"></i>Pesan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="bg-choc-main border border-choc-light rounded-sm overflow-hidden group hover-gold-glow transition-all duration-500">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=800&auto=format&fit=crop" alt="Nutty Crunchy Caramel" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-choc-deep text-gold-main border border-gold-main text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm">New</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-bold text-gold-light mb-2 group-hover:text-gold-main transition-colors">Nutty Gold Caramel</h3>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Cokelat premium dipadukan dengan selai kacang renyah dan siraman saus karamel emas yang legit.</p>
+                        <div class="flex justify-between items-center mt-6">
+                            <span class="text-gold-main font-bold text-xl">Rp 40.000</span>
+                            <button class="text-cream hover:text-gold-main text-sm uppercase tracking-wider font-semibold transition-colors"><i class="fas fa-plus mr-2 text-gold-main"></i>Pesan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Menu Item -->
-                <div class="menu-card p-8 rounded-3xl text-center group">
-                    <div class="text-6xl mb-6 floating-roti inline-block">🍞</div>
-                    <h4 class="text-xl font-bold text-gold mb-2">Coklat Keju</h4>
-                    <p class="text-sm text-cream/60 mb-6">Paduan klasik parutan keju emas dan coklat lumer.</p>
-                    <div class="text-lg font-bold py-2 border-t border-gold/20">Rp 10.000</div>
-                </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-b-2 border-gold-main text-gold-main pb-1 hover:text-gold-light hover:border-gold-light transition-colors font-medium uppercase tracking-widest text-sm">Lihat Menu Lengkap <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+    </section>
 
-                <div class="menu-card p-8 rounded-3xl text-center group">
-                    <div class="text-6xl mb-6 floating-roti inline-block" style="animation-delay: 0.5s">🍪</div>
-                    <h4 class="text-xl font-bold text-gold mb-2">Tiramisu Oreo</h4>
-                    <p class="text-sm text-cream/60 mb-6">Sensasi renyah biskuit hitam di atas krim kopi Italia.</p>
-                    <div class="text-lg font-bold py-2 border-t border-gold/20">Rp 13.000</div>
+    <!-- Visual Gallery (Portofolio) -->
+    <section id="galeri" class="py-24 bg-choc-deep relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold text-cream mb-2">Galeri <span class="text-gold-main italic">Kenikmatan</span></h2>
+                    <p class="text-gray-400 font-light max-w-xl">Intip visual menggoda dari dapur Neng Karamoy. Setiap potong roti dibakar dengan penuh dedikasi.</p>
                 </div>
-
-                <div class="menu-card p-8 rounded-3xl text-center group">
-                    <div class="text-6xl mb-6 floating-roti inline-block" style="animation-delay: 1s">🍯</div>
-                    <h4 class="text-xl font-bold text-gold mb-2">Lotus Biscoff</h4>
-                    <p class="text-sm text-cream/60 mb-6">Selai karamel premium dengan aroma rempah biskuit.</p>
-                    <div class="text-lg font-bold py-2 border-t border-gold/20">Rp 15.000</div>
+                <div class="flex gap-2">
+                    <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-choc-main border border-gold-main/30 flex items-center justify-center text-gold-main hover:bg-gold-main hover:text-choc-deep transition-all">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
+            </div>
 
-                <div class="menu-card p-8 rounded-3xl text-center group">
-                    <div class="text-6xl mb-6 floating-roti inline-block" style="animation-delay: 1.5s">🍫</div>
-                    <h4 class="text-xl font-bold text-gold mb-2">Premium Kitkat</h4>
-                    <p class="text-sm text-cream/60 mb-6">Kemewahan wafer coklat bar di setiap gigitan roti bakar.</p>
-                    <div class="text-lg font-bold py-2 border-t border-gold/20">Rp 17.000</div>
+            <!-- Masonry-style Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+                <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-sm cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800&auto=format&fit=crop" alt="Proses pembuatan roti bakar" class="w-full h-full object-cover transform group-hover:scale-110 transition-duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-choc-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-gold-main font-serif text-xl font-bold">Kualitas Artisan</span>
+                    </div>
+                </div>
+                <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-sm cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1601314167099-232775bbefa5?q=80&w=500&auto=format&fit=crop" alt="Cokelat lumer" class="w-full h-full object-cover transform group-hover:scale-110 transition-duration-700">
+                    <div class="absolute inset-0 bg-choc-dark/40 group-hover:bg-transparent transition-colors duration-300"></div>
+                </div>
+                <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-sm cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1542223616-928d1dd9db48?q=80&w=500&auto=format&fit=crop" alt="Detail roti" class="w-full h-full object-cover transform group-hover:scale-110 transition-duration-700">
+                    <div class="absolute inset-0 bg-choc-dark/40 group-hover:bg-transparent transition-colors duration-300"></div>
+                </div>
+                <div class="col-span-2 md:col-span-1 row-span-1 relative group overflow-hidden rounded-sm cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?q=80&w=500&auto=format&fit=crop" alt="Bahan baku premium" class="w-full h-full object-cover transform group-hover:scale-110 transition-duration-700">
+                    <div class="absolute inset-0 bg-choc-dark/40 group-hover:bg-transparent transition-colors duration-300"></div>
+                </div>
+                <div class="col-span-2 md:col-span-1 row-span-1 relative group overflow-hidden rounded-sm cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1621236378699-8597faf6a176?q=80&w=500&auto=format&fit=crop" alt="Penyajian" class="w-full h-full object-cover transform group-hover:scale-110 transition-duration-700">
+                    <div class="absolute inset-0 bg-choc-dark/40 group-hover:bg-transparent transition-colors duration-300"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-heading font-bold mb-8 text-gold">Filosofi Desain</h2>
-            <p class="text-xl leading-relaxed opacity-80 italic">
-                "Setiap piksel dalam desain Neng Karamoy saya buat untuk menciptakan rasa lapar visual. Warna cokelat memberikan kehangatan tradisi roti bakar, sementara aksen emas menunjukkan kualitas bahan premium yang kami gunakan."
+    <!-- Testimonial/CTA Section -->
+    <section class="py-24 bg-choc-main relative border-y border-gold-main/20">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <i class="fas fa-quote-left text-4xl text-gold-main/50 mb-6"></i>
+            <p class="text-2xl md:text-3xl font-serif text-cream italic mb-8 leading-relaxed">
+                "Bukan sekadar roti bakar biasa. Tekstur rotinya sangat pas, dan cokelatnya... benar-benar melimpah dan berkualitas. Tema gold kemasannya juga bikin terasa sangat premium!"
             </p>
-            <div class="mt-12 flex justify-center space-x-4">
-                <span class="bg-gold/10 text-gold px-6 py-2 rounded-full text-sm border border-gold/30">Branding</span>
-                <span class="bg-gold/10 text-gold px-6 py-2 rounded-full text-sm border border-gold/30">UI Design</span>
-                <span class="bg-gold/10 text-gold px-6 py-2 rounded-full text-sm border border-gold/30">Illustration</span>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-choc-dark border border-gold-main flex items-center justify-center">
+                    <i class="fas fa-user text-gold-main"></i>
+                </div>
+                <div class="text-left">
+                    <h5 class="text-gold-light font-bold">Chef Renata</h5>
+                    <span class="text-gray-400 text-sm">Food Enthusiast</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-gold/10 text-center text-xs tracking-widest opacity-40">
-        &copy; 2024 RUHAN MADINA PUTRI. DIBUAT DENGAN CINTA & COKELAT.
+    <!-- Footer & Contact -->
+    <footer id="kontak" class="bg-choc-dark pt-20 pb-10 border-t-4 border-gold-main">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div>
+                    <h2 class="font-serif text-3xl font-bold text-gold-main mb-6 gold-gradient-text">Neng Karamoy</h2>
+                    <p class="text-gray-400 mb-6 font-light leading-relaxed">
+                        Menyajikan roti bakar premium dengan sentuhan kemewahan dalam setiap porsinya. Kepuasan hangat untuk momen berharga Anda.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-choc-main border border-gold-main/30 flex items-center justify-center text-gold-main hover:bg-gold-main hover:text-choc-deep transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-choc-main border border-gold-main/30 flex items-center justify-center text-gold-main hover:bg-gold-main hover:text-choc-deep transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-choc-main border border-gold-main/30 flex items-center justify-center text-gold-main hover:bg-gold-main hover:text-choc-deep transition-all">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-gold-light font-bold uppercase tracking-widest mb-6">Tautan</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#beranda" class="text-gray-400 hover:text-gold-main transition-colors flex items-center gap-2"><i class="fas fa-caret-right text-gold-main/50"></i> Beranda</a></li>
+                        <li><a href="#tentang" class="text-gray-400 hover:text-gold-main transition-colors flex items-center gap-2"><i class="fas fa-caret-right text-gold-main/50"></i> Kisah Kami</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-gold-main transition-colors flex items-center gap-2"><i class="fas fa-caret-right text-gold-main/50"></i> Menu Spesial</a></li>
+                        <li><a href="#galeri" class="text-gray-400 hover:text-gold-main transition-colors flex items-center gap-2"><i class="fas fa-caret-right text-gold-main/50"></i> Galeri</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Ordering -->
+                <div>
+                    <h3 class="text-gold-light font-bold uppercase tracking-widest mb-6">Pemesanan</h3>
+                    <div class="bg-choc-main p-6 rounded-sm border border-gold-main/20 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-gold-main/10 rounded-bl-full"></div>
+                        <p class="text-gray-300 text-sm mb-4">Pesan sekarang untuk dine-in, takeaway, atau delivery.</p>
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fab fa-whatsapp text-gold-main text-2xl"></i>
+                            <div>
+                                <span class="block text-xs text-gray-400 uppercase tracking-wider">WhatsApp Admin</span>
+                                <span class="block text-gold-light font-bold">+62 812 3456 7890</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fas fa-map-marker-alt text-gold-main text-2xl ml-1 mr-1"></i>
+                            <div>
+                                <span class="block text-xs text-gray-400 uppercase tracking-wider">Lokasi Outlet</span>
+                                <span class="block text-gold-light text-sm">Jl. Kuliner Cokelat No. 99, Bandung</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 bg-gold-main text-choc-deep font-bold uppercase tracking-wider text-sm hover:bg-gold-light transition-colors duration-300 rounded-sm">
+                            Pesan Via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gold-main/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2024 Neng Karamoy Premium Toast. Hak Cipta Dilindungi.
+                </p>
+                <div class="flex gap-4 text-sm text-gray-500">
+                    <a href="#" class="hover:text-gold-main transition-colors">Kebijakan Privasi</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-gold-main transition-colors">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- JavaScript for Mobile Menu & Scroll Effect -->
     <script>
-        // Animasi Keju Parut
-        const zone = document.getElementById('cheeseZone');
-        function createCheese() {
-            const flake = document.createElement('div');
-            flake.className = 'cheese-flake';
-            flake.style.left = Math.random() * 100 + 'vw';
-            flake.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            flake.style.opacity = Math.random() * 0.5 + 0.2;
-            zone.appendChild(flake);
-            setTimeout(() => flake.remove(), 7000);
-        }
-        setInterval(createCheese, 400);
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
-        // Efek Klik Cokelat Leleh
-        document.addEventListener('mousedown', (e) => {
-            const drip = document.createElement('div');
-            drip.style.position = 'absolute';
-            drip.style.width = '15px';
-            drip.style.height = '15px';
-            drip.style.background = '#3D2B1F';
-            drip.style.borderRadius = '50%';
-            drip.style.left = e.pageX - 7 + 'px';
-            drip.style.top = e.pageY - 7 + 'px';
-            drip.style.zIndex = '100';
-            drip.style.pointerEvents = 'none';
-            drip.style.transition = 'all 0.8s ease-out';
-            document.body.appendChild(drip);
-            
-            setTimeout(() => {
-                drip.style.transform = 'scale(4) translateY(30px)';
-                drip.style.opacity = '0';
-            }, 10);
-            setTimeout(() => drip.remove(), 800);
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-choc-deep');
+                navbar.classList.remove('bg-choc-deep/95');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-choc-deep');
+                navbar.classList.add('bg-choc-deep/95');
+            }
         });
     </script>
 </body>
